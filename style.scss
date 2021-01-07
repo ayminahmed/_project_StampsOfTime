@@ -28,14 +28,14 @@ svg {
     position: relative;
 
     /* Box Model */
-    height: 40vw; // linked to #testframe height
+    height: 60vw; // linked to #testframe height
     margin: 1.5rem;
 }
 
 
 #testframe {
     width: 100%;
-    min-height: 40vw;
+    min-height: 60vw;
     /* min-height: 80vw; */ // For portrait view, deprioritizing for dev
 }
 
@@ -55,7 +55,7 @@ svg {
 
     /* Box Model */
     width: 100%;
-    min-height: 40vw; // Should be linked to #testframe dimensions
+    min-height: 60vw; // Should be linked to #testframe dimensions
 
     /* Other */
     pointer-events: none;
@@ -126,8 +126,8 @@ svg {
     svg {
 
         /* Box Model */
-        width: 2.5rem;
-        height: 2.5rem;
+        width: 3rem;
+        height: 3rem;
         padding: 0.5rem;
 
         /* Colors and Typography */
@@ -183,11 +183,37 @@ svg {
     display: flex; // Display
     align-items: center;
 
-    svg { height: 1.5rem; } // Box Model
+    svg { height: 1.75rem; } // Box Model
 }
 
 .secondary-control-bar .control-label::after {
     content: ':';
+}
+
+.list-container {
+    padding: 0.25rem; // Box Model
+    background-color: $color-primary; // Colors and Typography
+}
+
+.timestamp-bar {
+    display: flex; // Display
+    
+    * { margin-right: 0.25rem; } // Box Model
+    *:last-child { margin-right: 0; }
+    margin-bottom: 0.25rem;
+    &:last-child { margin-bottom: 0; }
+    
+}
+
+.stamp-time {
+    width: 5rem; // Box Model
+
+    text-align: center; // Other
+}
+
+.stamp-title {
+    width: 100%;
+    text-indent: 0.5rem;
 }
 /******************************* Stamp-List /> ******************************/
 /****************************************************************************/
