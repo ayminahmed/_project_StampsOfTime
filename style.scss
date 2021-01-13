@@ -12,6 +12,8 @@ svg {
     height: 2rem;    
     
     fill: $color-light; // Colors and Typography
+
+    cursor: pointer; // Other
 }
 
 /********************************* General /> ********************************/
@@ -123,12 +125,17 @@ svg {
 
     /* Other */
 
-    svg {
+    svg {   // changed from svg to div, remember
+
+        /* Display */
+        flex-basis: 1;
+        flex-grow: 1;
+        flex-shrink: 1;
 
         /* Box Model */
-        width: 3rem;
-        height: 3rem;
-        padding: 0.5rem;
+        //width: 3rem;
+        //height: 3rem;
+        //padding: 0.5rem;
 
         /* Colors and Typography */
         background-color: $overlay-dark;
