@@ -14,6 +14,8 @@ var xG_interval = 0;
 var xG_anchor = 0;
 
 /* globally used elements */
+var iframeOverlay = document.querySelector('.iframe-overlay');
+var stampingMenu = document.querySelector('.stamping-menu')
 var labelTimerTime = document.querySelector('.timer-time');
 var labelTimerAnchor = document.querySelector('.timer-anchor');
 var iconAnchorNow = document.querySelector('.icon-anchor-now');
@@ -22,6 +24,10 @@ var iconPreviousSecond = document.querySelector('.icon-previous-second');
 var iconNextSecond = document.querySelector('.icon-next-second');
 var iconPlay = document.querySelector('.icon-play');
 var iconPause = document.querySelector('.icon-pause');
+var iconAddStamp = document.querySelector('.icon-add-stamp');
+var btnAddStampCancel = document.querySelector('.add-stamp-cancel');
+var inputAddStampTime = document.querySelector('.add-stamp-time');
+var btnVisibilityIcon = document.querySelector('.visibility-icon');
 
 
 
@@ -94,6 +100,27 @@ function __nextSecond() { // triggered by next second icon
     player.seekTo(Math.floor(player.getCurrentTime()) + 1);
 }
 
+function toggleStampMenu() {
+    iframeOverlay.classList.toggle('push-left');
+    stampingMenu.classList.toggle('push-left');
+}
+
+function __addStamp() { // triggered by add button on video overlay
+    toggleStampMenu();
+    var currTime = new Date(Math.floor(player.getCurrentTime()) * 1000)
+    .toISOString().substr(11, 8);
+    inputAddStampTime.value = currTime;
+}
+
+function __addStampCancel() { // triggered by cancel button in stamping menu
+    toggleStampMenu();
+}
+
+function __toggleVisibility() {
+    iframeOverlay.classList.toggle('transparent');
+    stampingMenu.classList.toggle('transparent');
+}
+
 function setListeners() {
     iconAnchorNow.addEventListener('click', __setAnchorNow);
     iconSeekToAnchor.addEventListener('click', __seekToAnchor);
@@ -101,6 +128,9 @@ function setListeners() {
     iconPause.addEventListener('click', __pause);
     iconPreviousSecond.addEventListener('click', __previousSecond);
     iconNextSecond.addEventListener('click', __nextSecond);
+    iconAddStamp.addEventListener('click', __addStamp);
+    btnAddStampCancel.addEventListener('click', __addStampCancel);
+    btnVisibilityIcon.addEventListener('click', __toggleVisibility);
 }
 
 function startIntervals() {
