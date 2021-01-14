@@ -22,8 +22,7 @@ svg {
     text-align: center; // Other
 }
 
-.title-input { text-indent: 0.5rem; }
-
+.title-input { padding: 0 0.5rem; }
 /********************************* General /> ********************************/
 /*****************************************************************************/
 
@@ -32,6 +31,14 @@ svg {
 
 /*****************************************************************************/
 /********************************** < Video **********************************/
+.visibility-icon {
+    position: absolute; // Position
+    right: 0;
+    top: calc(50% - 1rem);
+
+    background-color: $overlay-dark; // Colors and Typography
+}
+
 .iframe-container {
 
     /* Position */
@@ -175,19 +182,16 @@ svg {
 
     background-color: $overlay-dark; // Colors & Typography
 
-    transition: all 0.1s ease-in-out 0s; // Other
+    pointer-events: none;
+    * { pointer-events: all; } // Other
+    transition: all 0.1s ease-in-out 0s;
 }
 
 
-.push-left {
-    transform: translateX(-100%);
-}
-
-
-.visibility-icon {
-    position: absolute; // Position
-    right: 0;
-    top: calc(50% - 1rem);
+.add-stamp-icons-container {
+    display: flex; // Display
+    
+    * { margin: 0.5rem; } // Box Model
 }
 /********************************* Video /> *********************************/
 /****************************************************************************/
@@ -237,9 +241,6 @@ svg {
     svg { height: 1.75rem; } // Box Model
 }
 
-.secondary-control-bar .control-label::after {
-    content: ':';
-}
 
 .list-container {
     padding: 0.25rem; // Box Model

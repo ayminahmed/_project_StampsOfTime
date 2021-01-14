@@ -21,6 +21,8 @@
             allowfullscreen>
         </iframe>
 
+        <div class="visibility-icon"><svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"viewBox="0 0 490 322.5" style="enable-background:new 0 0 490 322.5;" xml:space="preserve"><g><g><path d="M486.6,150C422.7,53.3,336.9,0,245,0S67.3,53.3,3.4,150c-4.5,6.8-4.5,15.7,0,22.5c63.9,96.7,149.7,150,241.6,150s177.7-53.3,241.6-150C491.1,165.7,491.1,156.9,486.6,150L486.6,150z M245,281.7c-74.2,0-144.8-42.6-199.9-120.4C100.1,83.5,170.7,40.9,245,40.9c74.2,0,144.8,42.6,199.9,120.4C389.8,239.1,319.3,281.7,245,281.7z"/><path d="M245,53.8c-59.3,0-107.5,48.2-107.5,107.5S185.7,268.8,245,268.8s107.5-48.2,107.5-107.5S304.3,53.8,245,53.8z M245,229.3c-36.8,0-66.8-30.5-66.8-68s30-68,66.8-68s66.8,30.5,66.8,68S281.8,229.3,245,229.3L245,229.3z"/></g></g></svg></div>
+
         <div class="iframe-overlay">            
             <div class="timers-container">
                 <div class="timer-container">
@@ -47,20 +49,18 @@
             <input type="text" class="add-stamp-time time-input">
             <textarea class="add-stamp-title title-input"
                       placeholder="Stamp Title"></textarea>
-            <div class="add-stamp-icons-container">
-                <button class="add-stamp-cancel">Cancel</button>
-                <button class="add-stamp-confirm">Confirm</button>
+            <div class="add-stamp-icons-container">                
+                <div class="add-stamp-cancel"><svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"viewBox="0 0 512 416" style="enable-background:new 0 0 512 416;" xml:space="preserve"><g><g><path d="M320,64H192V0h-32L0,160l160,160h32v-64h160c88.4,0,112,71.6,112,160h48V256C512,150,426,64,320,64z"/></g></g></svg></div>
+                <div class="add-stamp-confirm"><svg version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"viewBox="0 0 237 188.3" style="enable-background:new 0 0 237 188.3;" xml:space="preserve"><polygon points="198.1,0 87.5,110.6 38.9,61.9 0,100.8 87.5,188.3 237,38.9 "/></svg></div>
             </div>
-        </div>
-
-        <button class="visibility-icon">Visibility</button>
+        </div>            
     
     </div>
     <!-- Video /> -->
 
 
     <!-- < StampList -->
-    <div class="stamp-list-section">
+    <div class="stamp-list-section removed">
         
         <div class="control-bar-container">
             <!-- logic is that js+css will hoist option bar and activated bar -->
@@ -68,13 +68,21 @@
                 <div class="control-label">OPTIONS: </div>
                 <div class="control-icons">
                     <svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"viewBox="0 0 44 44" style="enable-background:new 0 0 44 44;" xml:space="preserve"><path d="M22,0C9.9,0,0,9.9,0,22s9.9,22,22,22s22-9.9,22-22S34.1,0,22,0z M22,2c11.1,0,20,8.9,20,20s-8.9,20-20,20S2,33.1,2,22S10.9,2,22,2z M21,11v10H11v2h10v10h2V23h10v-2H23V11H21z"/></svg>
-                    <svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"viewBox="0 0 122.9 98.1" style="enable-background:new 0 0 122.9 98.1;" xml:space="preserve"><g><path d="M37.2,15.4v0.2h33.5v26.5H36.9l0,0.3V52c0,0.1,0,0.2,0,0.2c-0.1,2.1-0.8,3.5-2.1,4.4c-1.3,0.9-3,0.9-5.1,0.2c-0.2-0.1-0.4-0.2-0.6-0.3C19.1,48.6,12.1,40.7,2,32.7l-0.1-0.1c-1.7-1.5-2.1-3.1-1.8-4.7c0.3-1.4,1.3-2.6,2.6-3.6l24.8-22c1.2-1,2.5-1.7,3.7-2c1.1-0.3,2.1-0.3,3.1,0c1,0.4,1.9,1.1,2.4,2.4c0.4,0.9,0.6,2,0.6,3.5v9.1C37.2,15.2,37.2,15.3,37.2,15.4L37.2,15.4L37.2,15.4z M85.7,82.7v-0.2H52.1V56h33.8l0-0.3v-9.6c0-0.1,0-0.2,0-0.2c0.1-2.1,0.8-3.5,2.1-4.4c1.3-0.9,3-0.9,5.1-0.2c0.2,0.1,0.4,0.2,0.6,0.3c10.1,7.9,17.1,15.9,27.2,23.8l0.1,0.1c1.7,1.5,2.1,3.1,1.8,4.7c-0.3,1.4-1.3,2.6-2.6,3.6l-24.8,22c-1.2,0.9-2.5,1.7-3.7,2.1c-1.1,0.3-2.1,0.3-3.1,0c-1.1-0.4-1.9-1.2-2.4-2.4c-0.4-0.9-0.6-2-0.6-3.5V83C85.7,82.9,85.7,82.8,85.7,82.7L85.7,82.7L85.7,82.7z"/></g></svg>
+                    <!--<svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"viewBox="0 0 122.9 98.1" style="enable-background:new 0 0 122.9 98.1;" xml:space="preserve"><g><path d="M37.2,15.4v0.2h33.5v26.5H36.9l0,0.3V52c0,0.1,0,0.2,0,0.2c-0.1,2.1-0.8,3.5-2.1,4.4c-1.3,0.9-3,0.9-5.1,0.2c-0.2-0.1-0.4-0.2-0.6-0.3C19.1,48.6,12.1,40.7,2,32.7l-0.1-0.1c-1.7-1.5-2.1-3.1-1.8-4.7c0.3-1.4,1.3-2.6,2.6-3.6l24.8-22c1.2-1,2.5-1.7,3.7-2c1.1-0.3,2.1-0.3,3.1,0c1,0.4,1.9,1.1,2.4,2.4c0.4,0.9,0.6,2,0.6,3.5v9.1C37.2,15.2,37.2,15.3,37.2,15.4L37.2,15.4L37.2,15.4z M85.7,82.7v-0.2H52.1V56h33.8l0-0.3v-9.6c0-0.1,0-0.2,0-0.2c0.1-2.1,0.8-3.5,2.1-4.4c1.3-0.9,3-0.9,5.1-0.2c0.2,0.1,0.4,0.2,0.6,0.3c10.1,7.9,17.1,15.9,27.2,23.8l0.1,0.1c1.7,1.5,2.1,3.1,1.8,4.7c-0.3,1.4-1.3,2.6-2.6,3.6l-24.8,22c-1.2,0.9-2.5,1.7-3.7,2.1c-1.1,0.3-2.1,0.3-3.1,0c-1.1-0.4-1.9-1.2-2.4-2.4c-0.4-0.9-0.6-2-0.6-3.5V83C85.7,82.9,85.7,82.8,85.7,82.7L85.7,82.7L85.7,82.7z"/></g></svg>-->
                     <svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"viewBox="0 0 359.4 443" style="enable-background:new 0 0 359.4 443;" xml:space="preserve"><g><path d="M280,38h-83.4V0H83.4v38H0v60h280V38z M113.4,30h53.2v8h-53.2C113.4,38,113.4,30,113.4,30z"/><path d="M253.4,214.3L259,128H21l19,290h114.2c-14.9-21.1-23.6-46.7-23.6-74.4C130.6,274.4,185.1,217.8,253.4,214.3z"/><path d="M260,244.1c-54.8,0-99.4,44.6-99.4,99.4S205.2,443,260,443s99.4-44.6,99.4-99.4S314.8,244.1,260,244.1z M314.2,376.5L293,397.7l-33-33l-33,33l-21.2-21.2l33-33l-33-33l21.2-21.2l33,33l33-33l21.2,21.2l-33,33L314.2,376.5z"/></g></svg>
                     <svg version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"viewBox="0 0 237 188.3" style="enable-background:new 0 0 237 188.3;" xml:space="preserve"><polygon points="198.1,0 87.5,110.6 38.9,61.9 0,100.8 87.5,188.3 237,38.9 "/></svg>
                 </div>
+            </div>                       
+            <div class="control-bar secondary-control-bar delete-bar">
+                <div class="control-label">DELETE: </div>
+                <div class="control-icons">
+                    <svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"viewBox="0 0 512 416" style="enable-background:new 0 0 512 416;" xml:space="preserve"><g><g><path d="M320,64H192V0h-32L0,160l160,160h32v-64h160c88.4,0,112,71.6,112,160h48V256C512,150,426,64,320,64z"/></g></g></svg>
+                    <svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"viewBox="0 0 359.4 443" style="enable-background:new 0 0 359.4 443;" xml:space="preserve"><g><path d="M280,38h-83.4V0H83.4v38H0v60h280V38z M113.4,30h53.2v8h-53.2C113.4,38,113.4,30,113.4,30z"/><path d="M253.4,214.3L259,128H21l19,290h114.2c-14.9-21.1-23.6-46.7-23.6-74.4C130.6,274.4,185.1,217.8,253.4,214.3z"/><path d="M260,244.1c-54.8,0-99.4,44.6-99.4,99.4S205.2,443,260,443s99.4-44.6,99.4-99.4S314.8,244.1,260,244.1z M314.2,376.5L293,397.7l-33-33l-33,33l-21.2-21.2l33-33l-33-33l21.2-21.2l33,33l33-33l21.2,21.2l-33,33L314.2,376.5z"/></g></svg>
+                </div>
             </div>
+            <!--
             <div class="control-bar secondary-control-bar shift-bar">
-                <div class="control-label">SHIFT</div>
+                <div class="control-label">SHIFT: </div>
                 <div class="control-icons">
                     <svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"viewBox="0 0 512 416" style="enable-background:new 0 0 512 416;" xml:space="preserve"><g><g><path d="M320,64H192V0h-32L0,160l160,160h32v-64h160c88.4,0,112,71.6,112,160h48V256C512,150,426,64,320,64z"/></g></g></svg>
                     <svg version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"viewBox="0 0 57 40" style="enable-background:new 0 0 57 40;" xml:space="preserve"><path d="M56.5,0.1c-0.3-0.2-0.7-0.1-1,0.1L29,18.8V1c0-0.4-0.2-0.7-0.5-0.9s-0.7-0.1-1,0.1l-27,19C0.2,19.4,0,19.7,0,20s0.2,0.6,0.4,0.8l27,19c0.2,0.1,0.4,0.2,0.6,0.2s0.3,0,0.5-0.1c0.3-0.2,0.5-0.5,0.5-0.9V21.2l26.4,18.6c0.2,0.1,0.4,0.2,0.6,0.2c0.2,0,0.3,0,0.5-0.1c0.3-0.2,0.5-0.5,0.5-0.9V1C57,0.6,56.8,0.3,56.5,0.1z"/></svg>
@@ -82,41 +90,19 @@
 
                 </div>
             </div>
-            <div class="control-bar secondary-control-bar delete-bar">
-                <div class="control-label">DELETE</div>
-                <div class="control-icons">
-                    <svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"viewBox="0 0 512 416" style="enable-background:new 0 0 512 416;" xml:space="preserve"><g><g><path d="M320,64H192V0h-32L0,160l160,160h32v-64h160c88.4,0,112,71.6,112,160h48V256C512,150,426,64,320,64z"/></g></g></svg>
-                    <svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"viewBox="0 0 359.4 443" style="enable-background:new 0 0 359.4 443;" xml:space="preserve"><g><path d="M280,38h-83.4V0H83.4v38H0v60h280V38z M113.4,30h53.2v8h-53.2C113.4,38,113.4,30,113.4,30z"/><path d="M253.4,214.3L259,128H21l19,290h114.2c-14.9-21.1-23.6-46.7-23.6-74.4C130.6,274.4,185.1,217.8,253.4,214.3z"/><path d="M260,244.1c-54.8,0-99.4,44.6-99.4,99.4S205.2,443,260,443s99.4-44.6,99.4-99.4S314.8,244.1,260,244.1z M314.2,376.5L293,397.7l-33-33l-33,33l-21.2-21.2l33-33l-33-33l21.2-21.2l33,33l33-33l21.2,21.2l-33,33L314.2,376.5z"/></g></svg>
-                </div>
-            </div>
+            -->
         </div>
 
         <div class="list-container">
-
-            
+            <!--
             <div class="timestamp-bar">
                 <input type="checkbox" class="removed">
                 <input type="text" class="stamp-time time-input" placeholder="00:00:00">
                 <input type="text" class="stamp-title title-input" placeholder="Stamp Title">
             </div>
-            <div class="timestamp-bar">
-                <input type="checkbox" class="removed">
-                <input type="text" class="stamp-time time-input" placeholder="00:00:00"
-                       value="00:01:14">
-                <input type="text" class="stamp-title title-input" placeholder="Stamp Title"
-                       value="Overview">
-            </div>
-            <div class="timestamp-bar">
-                <input type="checkbox" class="removed">
-                <input type="text" class="stamp-time time-input" placeholder="00:00:00"
-                       value="00:03:37">
-                <input type="text" class="stamp-title title-input" placeholder="Stamp Title"
-                       value="Chapter 1: What is HTML?">
-            </div>
-            
-            
+            -->               
         </div>
-
+    
     </div>
 
     

@@ -23,14 +23,20 @@ $overlay-dark: rgba(0, 0, 0, 0.5);
     box-sizing: border-box;
 }
 
+
 body {
     font-family: Roboto;
     font-size: 16px;
     line-height: 1.5rem;
 }
 
+
 .removed { display: none; }
 
+
 .transparent { opacity: 0.05; }
+
+
+.push-left { transform: translateX(-100%); }
 /********************************* Generic /> ********************************/
 /*****************************************************************************/

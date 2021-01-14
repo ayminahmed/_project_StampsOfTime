@@ -12,8 +12,10 @@
 /* global variables */
 var xG_interval = 0;
 var xG_anchor = 0;
+var xG_listSectionVisiblity = 0;
 
 /* globally used elements */
+var listSection = document.querySelector('.stamp-list-section');
 var iframeOverlay = document.querySelector('.iframe-overlay');
 var stampingMenu = document.querySelector('.stamping-menu')
 var labelTimerTime = document.querySelector('.timer-time');
@@ -25,9 +27,12 @@ var iconNextSecond = document.querySelector('.icon-next-second');
 var iconPlay = document.querySelector('.icon-play');
 var iconPause = document.querySelector('.icon-pause');
 var iconAddStamp = document.querySelector('.icon-add-stamp');
-var btnAddStampCancel = document.querySelector('.add-stamp-cancel');
+var iconAddStampConfirm = document.querySelector('.add-stamp-confirm');
+var iconAddStampCancel = document.querySelector('.add-stamp-cancel');
 var inputAddStampTime = document.querySelector('.add-stamp-time');
+var inputAddStampTitle = document.querySelector('.add-stamp-title');
 var btnVisibilityIcon = document.querySelector('.visibility-icon');
+var listContainer = document.querySelector('.list-container');
 
 
 
@@ -116,6 +121,28 @@ function __addStampCancel() { // triggered by cancel button in stamping menu
     toggleStampMenu();
 }
 
+function __addStampConfirm() { // triggered by confirm button in stamping menu
+    addNewStamp();
+    toggleStampMenu();
+}
+
+function addNewStamp() {
+    if ( listSection.classList.contains('removed') ) {
+        listSection.classList.remove('removed');
+    }
+    
+    var newText = '<div class="timestamp-bar">';
+    newText += '<input type="checkbox" class="removed">';
+    newText += '<input type="text" class="stamp-time time-input"';
+    newText += ' value="' + inputAddStampTime.value + '"';
+    newText += ' placeholder="00:00:00">';
+    newText += '<input type="text" class="stamp-title title-input"';
+    newText += ' value="' + inputAddStampTitle.value + '"';
+    newText += ' placeholder="Stamp Title">';
+    listContainer.innerHTML += newText;
+    inputAddStampTitle.value = "";
+}
+
 function __toggleVisibility() {
     iframeOverlay.classList.toggle('transparent');
     stampingMenu.classList.toggle('transparent');
@@ -129,7 +156,8 @@ function setListeners() {
     iconPreviousSecond.addEventListener('click', __previousSecond);
     iconNextSecond.addEventListener('click', __nextSecond);
     iconAddStamp.addEventListener('click', __addStamp);
-    btnAddStampCancel.addEventListener('click', __addStampCancel);
+    iconAddStampCancel.addEventListener('click', __addStampCancel);
+    iconAddStampConfirm.addEventListener('click', __addStampConfirm);
     btnVisibilityIcon.addEventListener('click', __toggleVisibility);
 }
 
