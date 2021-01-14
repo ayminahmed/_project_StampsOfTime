@@ -8,38 +8,43 @@
 
 
 
-
 /* global variables */
 var xG_interval = 0;
 var xG_anchor = 0;
 var xG_listSectionVisiblity = 0;
 
 /* globally used elements */
-var listSection = document.querySelector('.stamp-list-section');
-var iframeOverlay = document.querySelector('.iframe-overlay');
-var stampingMenu = document.querySelector('.stamping-menu')
-var labelTimerTime = document.querySelector('.timer-time');
-var labelTimerAnchor = document.querySelector('.timer-anchor');
-var iconAnchorNow = document.querySelector('.icon-anchor-now');
-var iconSeekToAnchor = document.querySelector('.icon-seek-to-anchor');
-var iconPreviousSecond = document.querySelector('.icon-previous-second');
-var iconNextSecond = document.querySelector('.icon-next-second');
-var iconPlay = document.querySelector('.icon-play');
-var iconPause = document.querySelector('.icon-pause');
-var iconAddStamp = document.querySelector('.icon-add-stamp');
+var listSection         = document.querySelector('.stamp-list-section');
+var iframeOverlay       = document.querySelector('.iframe-overlay');
+var stampingMenu        = document.querySelector('.stamping-menu')
+var labelTimerTime      = document.querySelector('.timer-time');
+var labelTimerAnchor    = document.querySelector('.timer-anchor');
+var iconAnchorNow       = document.querySelector('.icon-anchor-now');
+var iconSeekToAnchor    = document.querySelector('.icon-seek-to-anchor');
+var iconPreviousSecond  = document.querySelector('.icon-previous-second');
+var iconNextSecond      = document.querySelector('.icon-next-second');
+var iconPlay            = document.querySelector('.icon-play');
+var iconPause           = document.querySelector('.icon-pause');
+var iconAddStamp        = document.querySelector('.icon-add-stamp');
 var iconAddStampConfirm = document.querySelector('.add-stamp-confirm');
-var iconAddStampCancel = document.querySelector('.add-stamp-cancel');
-var inputAddStampTime = document.querySelector('.add-stamp-time');
-var inputAddStampTitle = document.querySelector('.add-stamp-title');
-var btnVisibilityIcon = document.querySelector('.visibility-icon');
-var listContainer = document.querySelector('.list-container');
+var iconAddStampCancel  = document.querySelector('.add-stamp-cancel');
+var inputAddStampTime   = document.querySelector('.add-stamp-time');
+var inputAddStampTitle  = document.querySelector('.add-stamp-title');
+var btnVisibilityIcon   = document.querySelector('.visibility-icon');
+var listContainer       = document.querySelector('.list-container');
+var iconAddEmptyStamp   = document.querySelector('.add-empty-stamp');
+var iconDeleteStamps    = document.querySelector('.delete-stamps');
+var iconGenerateStamps  = document.querySelector('.generate-stamps');
+var optionsBar          = document.querySelector('.options-bar');
+var deleteBar           = document.querySelector('.delete-bar');
+var iconDeleteCancel    = document.querySelector('.delete-cancel');
+var iconDeleteConfirm   = document.querySelector('.delete-confirm');
 
 
 
 
 /*****************************************************************************/
 /********************** < Video container functionality **********************/
-
 /* This code loads the IFrame Player API code asynchronously. */
 var tag = document.createElement('script');
 tag.src = "https://www.youtube.com/iframe_api";
@@ -56,10 +61,12 @@ function onYouTubeIframeAPIReady() {
     });
 }
 
+
 function __onPlayerReady() { // triggered by YT API itself once player's ready
     setListeners();
     startIntervals();
 }
+
 
 function __onPlayerStateChange() { // triggered by YT API when player state
                                    // is changed
@@ -73,65 +80,75 @@ function __onPlayerStateChange() { // triggered by YT API when player state
         iconPlay.classList.remove('removed');
     }
 }
-
-
 /* now use functions like player.playVideo(); , etc. from the console */
 
 
-
+/* Event listeners and related functions */
 function __setAnchorNow() { // triggered by div containing anchor-here icon
     xG_anchor = Math.floor(player.getCurrentTime());
     var currTime = new Date(xG_anchor * 1000).toISOString().substr(11, 8);
                    labelTimerAnchor.innerText = currTime;
 }
 
+
 function __seekToAnchor() { // triggered by div containing seek-to-anchor icon
     player.seekTo(xG_anchor);
 }
+
 
 function __play() { // triggered by custom play button
     player.playVideo();
 }
 
+
 function __pause() { // triggered by custom pause button
     player.pauseVideo();
 }
+
 
 function __previousSecond() { // triggered by previous second icon
     player.seekTo(Math.floor(player.getCurrentTime() - 1));
 }
 
+
 function __nextSecond() { // triggered by next second icon
     player.seekTo(Math.floor(player.getCurrentTime()) + 1);
 }
 
-function toggleStampMenu() {
+
+function toggleStampView() {
     iframeOverlay.classList.toggle('push-left');
     stampingMenu.classList.toggle('push-left');
 }
 
+
 function __addStamp() { // triggered by add button on video overlay
-    toggleStampMenu();
+    toggleStampView();
     var currTime = new Date(Math.floor(player.getCurrentTime()) * 1000)
     .toISOString().substr(11, 8);
     inputAddStampTime.value = currTime;
 }
 
+
 function __addStampCancel() { // triggered by cancel button in stamping menu
-    toggleStampMenu();
+    toggleStampView();
 }
+
 
 function __addStampConfirm() { // triggered by confirm button in stamping menu
     addNewStamp();
-    toggleStampMenu();
+    toggleStampView();
 }
+
 
 function addNewStamp() {
     if ( listSection.classList.contains('removed') ) {
         listSection.classList.remove('removed');
     }
-    
-    var newText = '<div class="timestamp-bar">';
+ 
+    var newDiv = document.createElement("div");
+    newDiv.classList.add("timestamp-bar");
+    var newText = '';
     newText += '<input type="checkbox" class="removed">';
     newText += '<input type="text" class="stamp-time time-input"';
     newText += ' value="' + inputAddStampTime.value + '"';
@@ -139,14 +156,18 @@ function addNewStamp() {
     newText += '<input type="text" class="stamp-title title-input"';
     newText += ' value="' + inputAddStampTitle.value + '"';
     newText += ' placeholder="Stamp Title">';
-    listContainer.innerHTML += newText;
+    newDiv.innerHTML = newText;    
+    listContainer.appendChild(newDiv);    
+    
     inputAddStampTitle.value = "";
 }
+
 
 function __toggleVisibility() {
     iframeOverlay.classList.toggle('transparent');
     stampingMenu.classList.toggle('transparent');
 }
+
 
 function setListeners() {
     iconAnchorNow.addEventListener('click', __setAnchorNow);
@@ -161,6 +182,7 @@ function setListeners() {
     btnVisibilityIcon.addEventListener('click', __toggleVisibility);
 }
 
+
 function startIntervals() {
     xG_interval = 
         setInterval(function(){
@@ -171,4 +193,64 @@ function startIntervals() {
         50);
 }
 /********************** Video container functionality /> *********************/
+/*****************************************************************************/
+
+
+
+
+/*****************************************************************************/
+/********************** < List container functionality ***********************/
+/* Event listeners and related functions */
+function __addEmptyStamp() { // triggered by add empty stamp button in list section
+    var newDiv = document.createElement("div");
+    newDiv.classList.add("timestamp-bar");
+    var newText = '';
+    newText += '<input type="checkbox" class="removed">';
+    newText += '<input type="text" class="stamp-time time-input"';
+    newText += ' placeholder="00:00:00">';
+    newText += '<input type="text" class="stamp-title title-input"';
+    newText += ' placeholder="Stamp Title">';
+    newDiv.innerHTML = newText;
+    listContainer.appendChild(newDiv);    
+}
+
+
+function toggleDeleteView() {
+    optionsBar.classList.toggle('hoisted-bar');
+    deleteBar.classList.toggle('hoisted-bar');
+    document.querySelectorAll('.timestamp-bar input[type="checkbox"]')
+        .forEach(checkbox => {
+            checkbox.classList.toggle('removed');
+            checkbox.checked = false;
+        });
+}
+
+
+function __deleteStamps() {
+    toggleDeleteView();
+}
+
+
+function __deleteCancel() {
+    toggleDeleteView();
+}
+
+
+function __deleteConfirm() {
+    document.querySelectorAll('.timestamp-bar').forEach(timestampBar => {
+        var checked = timestampBar.querySelector('input[type="checkbox"]')
+                      .checked;
+        if ( checked === true ) {
+            timestampBar.remove();
+        }
+    });
+    toggleDeleteView();
+}
+
+
+iconAddEmptyStamp.addEventListener('click', __addEmptyStamp);
+iconDeleteStamps.addEventListener('click', __deleteStamps);
+iconDeleteCancel.addEventListener('click', __deleteCancel);
+iconDeleteConfirm.addEventListener('click', __deleteConfirm);
+/********************** List container functionality /> **********************/
 /*****************************************************************************/

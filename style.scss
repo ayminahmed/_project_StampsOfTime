@@ -223,15 +223,17 @@ svg {
     align-items: center;
 
     height: 2rem; // Box Model
-    * { margin-left: 0.5rem;}    
+
+    transition: all 0.1s ease-in-out 0s; // Other
+    
+    div {
+        display: flex; // Display
+        margin-left: 0.5rem; // Box Model
+    }
 }
 
 .secondary-control-bar {    
     top: 2rem; // Position
-}
-
-.hoisted-bar {
-    transform: translateY(-2rem);
 }
 
 .control-icons {
