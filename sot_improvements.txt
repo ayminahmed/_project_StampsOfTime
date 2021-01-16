@@ -1,0 +1,12 @@
+
+
+general:
+
+escape double / single quotes (escape strings entirely somehow)
+
+
+
+ux:
+
+focus on stamp title input on clicking add new stamp
+focus on stamp title input after toggling visibility if on add new stamp view

@@ -39,6 +39,8 @@ var optionsBar          = document.querySelector('.options-bar');
 var deleteBar           = document.querySelector('.delete-bar');
 var iconDeleteCancel    = document.querySelector('.delete-cancel');
 var iconDeleteConfirm   = document.querySelector('.delete-confirm');
+var iconCopy            = document.querySelector('.icon-copy');
+var outputText          = document.querySelector('.output-text');
 
 
 
@@ -141,6 +143,16 @@ function __addStampConfirm() { // triggered by confirm button in stamping menu
 }
 
 
+function escapeHtml(unsafe) {
+    return unsafe
+         .replace(/&/g, "&amp;")
+         .replace(/</g, "&lt;")
+         .replace(/>/g, "&gt;")
+         .replace(/"/g, "&quot;")
+         .replace(/'/g, "&#039;");
+ }
+
+
 function addNewStamp() {
     if ( listSection.classList.contains('removed') ) {
         listSection.classList.remove('removed');
@@ -154,10 +166,14 @@ function addNewStamp() {
     newText += ' value="' + inputAddStampTime.value + '"';
     newText += ' placeholder="00:00:00">';
     newText += '<input type="text" class="stamp-title title-input"';
-    newText += ' value="' + inputAddStampTitle.value + '"';
+    newText += ' value="' + escapeHtml(inputAddStampTitle.value) + '"';
     newText += ' placeholder="Stamp Title">';
-    newDiv.innerHTML = newText;    
-    listContainer.appendChild(newDiv);    
+    newDiv.innerHTML = newText;
+    listContainer.appendChild(newDiv);
+    
+    if ( listContainer.classList.contains('removed') ) {
+        listContainer.classList.remove('removed');
+    }
     
     inputAddStampTitle.value = "";
 }
@@ -211,7 +227,11 @@ function __addEmptyStamp() { // triggered by add empty stamp button in list sect
     newText += '<input type="text" class="stamp-title title-input"';
     newText += ' placeholder="Stamp Title">';
     newDiv.innerHTML = newText;
-    listContainer.appendChild(newDiv);    
+    listContainer.appendChild(newDiv);
+    
+    if ( listContainer.classList.contains('removed') ) {
+        listContainer.classList.remove('removed');
+    }
 }
 
 
@@ -244,7 +264,23 @@ function __deleteConfirm() {
             timestampBar.remove();
         }
     });
+    if ( document.querySelectorAll('.timestamp-bar').length == 0 ) {
+        listContainer.classList.add('removed');
+    }
     toggleDeleteView();
+}
+
+
+function __generateStamps() {
+    var stamps = '';
+    document.querySelectorAll('.timestamp-bar').forEach(timestampBar => {
+        stamps += timestampBar.querySelector('.stamp-time').value;
+        stamps += ' ';
+        stamps += timestampBar.querySelector('.stamp-title').value;
+        stamps += '\n';
+    });
+    stamps = stamps.slice(0, -1);
+    outputText.value = stamps;
 }
 
 
@@ -252,5 +288,23 @@ iconAddEmptyStamp.addEventListener('click', __addEmptyStamp);
 iconDeleteStamps.addEventListener('click', __deleteStamps);
 iconDeleteCancel.addEventListener('click', __deleteCancel);
 iconDeleteConfirm.addEventListener('click', __deleteConfirm);
+iconGenerateStamps.addEventListener('click', __generateStamps);
 /********************** List container functionality /> **********************/
+/*****************************************************************************/
+
+
+
+/*****************************************************************************/
+/*********************** < Output Text functionality *************************/
+function __copyOutput() {  
+  //outputText.focus();
+  outputText.select();
+  document.execCommand('copy');
+}
+
+
+iconCopy.addEventListener('click', __copyOutput);
+
+
+/*********************** Output Text functionality /> ************************/
 /*****************************************************************************/

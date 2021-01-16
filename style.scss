@@ -205,6 +205,7 @@ svg {
     margin: 1.5rem; // Box Model
 }
 
+
 .control-bar-container {
     position: relative; // Position
 
@@ -215,6 +216,7 @@ svg {
 
     overflow: hidden; // Other
 }
+
 
 .control-bar {
     position: absolute; //Position
@@ -231,6 +233,7 @@ svg {
         margin-left: 0.5rem; // Box Model
     }
 }
+
 
 .secondary-control-bar {    
     top: 2rem; // Position
@@ -249,6 +252,7 @@ svg {
     background-color: $color-primary; // Colors and Typography
 }
 
+
 .timestamp-bar {
     display: flex; // Display
     
@@ -259,8 +263,55 @@ svg {
     
 }
 
+
 //.stamp-time { width: 5rem; }
 .stamp-title { width: 100%; }
+/******************************* Stamp-List /> *******************************/
+/*****************************************************************************/
 
-/******************************* Stamp-List /> ******************************/
-/****************************************************************************/
+
+
+
+/*****************************************************************************/
+/******************************* < Output-Text *******************************/
+.output-text-container {
+    /* Position */
+    position: relative;
+
+    /* Box Model */
+    height: 60vw; // linked to #testframe height
+    margin: 1.5rem;
+
+    /* Other */
+    overflow: hidden;
+}
+
+
+.output-text-bar {
+    display: flex; // Display
+    justify-content: flex-end;
+
+    height: 2rem; // Box Model
+    
+    background-color: $color-tertiary; // Colors and Typography
+
+    svg {
+        padding: 0.25rem;
+    }
+}
+
+
+.text-area-container {
+    height: calc(60vw - 2rem); // Box Model
+}
+
+
+.output-text {
+    width: 100%; // Box Model
+    height: 100%;
+    padding: 0.5rem;
+
+    resize: none; // Other
+}
+/*******************************  Output-Text /> *****************************/
+/*****************************************************************************/
