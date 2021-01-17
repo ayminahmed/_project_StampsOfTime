@@ -25,20 +25,33 @@ $overlay-dark: rgba(0, 0, 0, 0.5);
 }
 
 
+html {
+    height: 100%;
+}
+
+
 body {
     font-family: Roboto;
     font-size: 16px;
     line-height: 1.5rem;
+    
+    overflow-x: hidden;
 }
 
 
 .removed { display: none; }
 
 
+.hidden { opacity: 0; }
+
+
 .transparent { opacity: 0.05; }
 
 
 .push-left { transform: translateX(-100%); }
+
+
+.push-right { transform: translateX(100%); }
 
 
 .hoisted-bar { transform: translateY(-100%); }

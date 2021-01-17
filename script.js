@@ -14,7 +14,12 @@ var xG_anchor = 0;
 var xG_listSectionVisiblity = 0;
 
 /* globally used elements */
+var linkView            = document.querySelector('.link-view');
+var appView             = document.querySelector('.app-view');
+var inputLink           = document.querySelector('.input-link');
+var buttonParseLink     = document.querySelector('.button-parse-link');
 var listSection         = document.querySelector('.stamp-list-section');
+var testFrame           = document.querySelector('#testframe');
 var iframeOverlay       = document.querySelector('.iframe-overlay');
 var stampingMenu        = document.querySelector('.stamping-menu')
 var labelTimerTime      = document.querySelector('.timer-time');
@@ -40,7 +45,41 @@ var deleteBar           = document.querySelector('.delete-bar');
 var iconDeleteCancel    = document.querySelector('.delete-cancel');
 var iconDeleteConfirm   = document.querySelector('.delete-confirm');
 var iconCopy            = document.querySelector('.icon-copy');
+var outputTextSection   = document.querySelector('.output-text-section');
 var outputText          = document.querySelector('.output-text');
+
+
+
+
+/*****************************************************************************/
+/************************ < Link input functionality *************************/
+function __parseLink() {
+    var userString = inputLink.value;
+    var parsedUrl = new URL(userString);
+    var vid = parsedUrl.searchParams.get('v');
+    if ( vid == null ) {
+        console.log('Unable to parse link.');
+    }
+    else {
+        console.log(vid);
+        srcString = 'https://www.youtube.com/embed/';
+        srcString += vid;
+        srcString += '?enablejsapi=1';
+        console.log(srcString);
+        testFrame.src = srcString;
+        connectYT();
+
+        linkView.classList.add('push-left');
+        appView.classList.remove('hidden');
+        appView.classList.remove('push-right');
+
+    }
+}
+
+
+buttonParseLink.addEventListener('click', __parseLink);
+/*********************** Link input functionality /> *************************/
+/*****************************************************************************/
 
 
 
@@ -48,10 +87,12 @@ var outputText          = document.querySelector('.output-text');
 /*****************************************************************************/
 /********************** < Video container functionality **********************/
 /* This code loads the IFrame Player API code asynchronously. */
+function connectYT() {
 var tag = document.createElement('script');
 tag.src = "https://www.youtube.com/iframe_api";
 var firstScriptTag = document.getElementsByTagName('script')[0];
 firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
+}
 var player;
 /* Runs automatically when API code downloads */
 function onYouTubeIframeAPIReady() {
@@ -142,7 +183,10 @@ function __addStampConfirm() { // triggered by confirm button in stamping menu
     toggleStampView();
 }
 
-
+/** 
+ *{https://stackoverflow.com/questions/
+    6234773/can-i-escape-html-special-chars-in-javascript}
+ */
 function escapeHtml(unsafe) {
     return unsafe
          .replace(/&/g, "&amp;")
@@ -281,6 +325,10 @@ function __generateStamps() {
     });
     stamps = stamps.slice(0, -1);
     outputText.value = stamps;
+
+    if ( outputTextSection.classList.contains('removed') ) {
+        outputTextSection.classList.remove('removed');
+    }
 }
 
 
@@ -294,6 +342,7 @@ iconGenerateStamps.addEventListener('click', __generateStamps);
 
 
 
+
 /*****************************************************************************/
 /*********************** < Output Text functionality *************************/
 function __copyOutput() {  
@@ -304,7 +353,5 @@ function __copyOutput() {
 
 
 iconCopy.addEventListener('click', __copyOutput);
-
-
 /*********************** Output Text functionality /> ************************/
 /*****************************************************************************/

@@ -29,8 +29,51 @@ svg {
 
 
 
+/********************************* < Link ************************************/
+/*****************************************************************************/
+.link-view {
+
+    display: flex; // Display
+    justify-content: center;
+    align-items: center;
+
+    position: absolute; // Position
+    top: 0;
+    left: 0;
+
+    margin: auto; // Box Model
+    width: 100%;
+    height: 100%;
+
+    transition: transform 0.1s ease-in-out 0.1s; // Other
+}
+
+/*.welcome-message {
+    display: flex; // Display
+    justify-content: center;
+    align-items: center;
+
+    text-align: center; // Colors & Typography
+}*/
+
+/*.link-input {
+    display: flex; // Display
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}*/
+/*****************************************************************************/
+/********************************* Link /> ***********************************/
+
+
+
 /*****************************************************************************/
 /********************************** < Video **********************************/
+.app-view {
+    transition: transform 0.1s ease-in-out 0.1s; // Other
+}
+
+
 .visibility-icon {
     position: absolute; // Position
     right: 0;
